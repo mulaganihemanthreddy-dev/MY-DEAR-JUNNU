@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Junnu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            /* Smooth, deep royal blue romantic gradient */
+            background: linear-gradient(135deg, #051937, #004d7a, #008793, #00bf72);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            padding: 24px;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card Container */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            max-width: 440px;
+            width: 100%;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Giant pulsing red rose indicator */
+        .main-rose {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: heartbeat 1.4s infinite ease-in-out;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 400;
+        }
+
+        /* Falling Rose/Heart/Emoji Elements */
+        .falling-item {
+            position: absolute;
+            top: -10%;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="main-rose">🌹</div>
+        <h1>I love you, Junnu! ❤️</h1>
+        <p>Hey Junnu, I just wanted to tell you that I am missing you like crazy right now. Distance means so little when someone means so much. Can't wait to see you soon! 😘🤌🥰</p>
+    </div>
+
+    <!-- Script to create falling roses, hearts, and emojis -->
+    <script>
+        // Array updated with your new emojis
+        const items = ['🌹', '❤️', '🌹', '🥰', '😘', '🤌', '❣'];
+
+        function createFallingItem() {
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+            
+            // Randomly select an item from the list
+            item.innerHTML = items[Math.floor(Math.random() * items.length)];
+            
+            // Randomize styling properties
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = Math.random() * 3 + 4s; // 4 to 7 seconds fall time
+            item.style.fontSize = Math.random() * 12 + 18 + 'px'; // 18px to 30px size
+            
+            document.body.appendChild(item);
+            
+            // Remove item from DOM after it leaves screen
+            setTimeout(() => {
+                item.remove();
+            }, 7000);
+        }
+
+        // Spawn an item every 350 milliseconds
+        setInterval(createFallingItem, 350);
+    </script>
+
+</body>
+</html>
